@@ -47,7 +47,7 @@ function kl_add_audience($classes) {
         if (function_exists('members_get_post_roles')) {
             $roles_allowed = members_get_post_roles( $post->ID );
             foreach ($roles_allowed as $role_allowed) {
-                $classes[] = $role_allowed;
+                $classes[] = 'role-'.$role_allowed;
             }
         }
 
@@ -57,7 +57,7 @@ function kl_add_audience($classes) {
             $groups_allowed = klbca_get_groups_restrict_categories($category->category_nicename);
             if ($groups_allowed) {
                 foreach ($groups_allowed as $group_allowed) {
-                    $classes[] = klbca_get_group_name((int)$group_allowed->meta_value).' ';
+                    $classes[] = 'group-'.klbca_get_group_name((int)$group_allowed->meta_value).' ';
                 }
             }
         }
